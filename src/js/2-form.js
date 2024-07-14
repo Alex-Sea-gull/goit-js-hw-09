@@ -1,7 +1,7 @@
 'use strict';
 
 const chekForm = document.querySelector(".form-feedback");
-const FEEDBACK_KEY = "user";
+const FEEDBACK_KEY = "feedback-form-state";
 
 // * Создаем переменную для хранения електронной почты и сообщения
 let formData = {
