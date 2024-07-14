@@ -1,5 +1,9 @@
 'use strict';
 
+
+import 'simplelightbox/dist/simple-lightbox.min.css';
+import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm";
+
 const images = [
     {
         preview:
@@ -97,17 +101,41 @@ function cardClick(event) {
     if (event.currentTarget === event.target) {
         return;
     }
-
-    const instance = basicLightbox.create(`
-	<div class="modal"> 
-    <img
-      class="custom-modal"
-      src="${event.target.dataset.source}"
-      data-source="${event.target.src}"
-      alt="${event.target.alt}"
-    />
-    </div>
-`);
-    console.log(`${event.target.dataset.source}`);
-    instance.show();
 }
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  overlayOpacity: 0.9,
+})
+
+// console.log(lightbox);
+
+
+
+
+
+
+
+
+
+
+// // Функция для создания HTML-разметки изображений
+// function createImageMarkup(images) {
+//     return images.map(({ preview, original, description }) => `
+//         <li class="gallery-item">
+//             <a class="gallery-link" href="${original}">
+//                 <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}" />
+//             </a>
+//         </li>`).join("");
+// }
+
+// // Вставляем сгенерированную разметку в контейнер .gallery
+// document.querySelector(".gallery").insertAdjacentHTML("beforeend", createImageMarkup(images));
+
+// // Инициализация SimpleLightbox для элементов .gallery a
+// new SimpleLightbox('.gallery a', {
+//     captionsData: 'alt',
+//     captionDelay: 250,
+//     overlayOpacity: 0.9,
+// });
